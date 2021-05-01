@@ -2175,3 +2175,10 @@ skip_GS_BGS_text:
 ; Replaces: sw      a0, 0x18(sp)
 .orga 0xC5A9F0
     jal     clear_boomerang_pointer
+
+
+;Kill Door of Time collision when the cutscene starts
+
+.orga 0xCCE9A4
+    jal     kill_door_of_time_col ; Replaces lui     $at, 0x3F80 
+    lw      t8, 0x011C(s0) ; replaces mtc1    $at, $f6 
