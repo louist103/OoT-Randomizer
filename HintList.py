@@ -97,11 +97,11 @@ def stones_required_by_settings(world):
     stones = 0
     if world.bridge == 'stones':
         stones = max(stones, world.bridge_stones)
-    if world.shuffle_ganon_bosskey == 'lacs_stones':
+    if world.shuffle_ganon_bosskey == 'on_lacs' and world.lacs_condition == 'lacs_stones':
         stones = max(stones, world.lacs_stones)
     if world.bridge == 'dungeons':
         stones = max(stones, world.bridge_rewards - 6)
-    if world.shuffle_ganon_bosskey == 'lacs_dungeons':
+    if world.shuffle_ganon_bosskey == 'on_lacs' and world.lacs_condition == 'lacs_dungeons':
         stones = max(stones, world.lacs_rewards - 6)
 
     return stones
@@ -111,11 +111,11 @@ def medallions_required_by_settings(world):
     medallions = 0
     if world.bridge == 'medallions':
         medallions = max(medallions, world.bridge_medallions)
-    if world.shuffle_ganon_bosskey == 'lacs_medallions':
+    if world.shuffle_ganon_bosskey == 'on_lacs' and world.lacs_condition == 'lacs_medallions':
         medallions = max(medallions, world.lacs_medallions)
     if world.bridge == 'dungeons':
         medallions = max(medallions, max(world.bridge_rewards - 3, 0))
-    if world.shuffle_ganon_bosskey == 'lacs_dungeons':
+    if world.shuffle_ganon_bosskey == 'on_lacs' and world.lacs_condition == 'lacs_dungeons':
         medallions = max(medallions, max(world.lacs_rewards - 3, 0))
 
     return medallions
@@ -125,7 +125,7 @@ def tokens_required_by_settings(world):
     tokens = 0
     if world.bridge == 'tokens':
         tokens = max(tokens, world.bridge_tokens)
-    if world.shuffle_ganon_bosskey == 'lacs_tokens':
+    if world.shuffle_ganon_bosskey == 'on_lacs' and world.lacs_condition == 'lacs_tokens':
         tokens = max(tokens, world.lacs_tokens)
 
     return tokens
@@ -1114,7 +1114,7 @@ hintTable = {
     'ZD Storms Grotto':                                         ("a small #Fairy Fountain#", None, 'region'),
     'GF Storms Grotto':                                         ("a small #Fairy Fountain#", None, 'region'),
 
-    '1001':                                                     ("Ganondorf 2020!", None, 'junk'),
+    '1001':                                                     ("Ganondorf 2022!", None, 'junk'),
     '1002':                                                     ("They say that monarchy is a terrible system of governance.", None, 'junk'),
     '1003':                                                     ("They say that Zelda is a poor leader.", None, 'junk'),
     '1004':                                                     ("These hints can be quite useful. This is an exception.", None, 'junk'),
@@ -1134,7 +1134,7 @@ hintTable = {
     '1023':                                                     ("I'll make you eat those words.", None, 'junk'),
     '1024':                                                     ("What happened to Sheik?", None, 'junk'),
     '1025':                                                     ("L2P @.", None, 'junk'),
-    '1026':                                                     ("I heard @ isn't very good at Zelda.", None, 'junk'),
+    '1026':                                                     ("I've heard Sploosh Kaboom is a tricky game.", None, 'junk'),
     '1027':                                                     ("I'm Lonk from Pennsylvania.", None, 'junk'),
     '1028':                                                     ("I bet you'd like to have more bombs.", None, 'junk'),
     '1029':                                                     ("When all else fails, use Fire.", None, 'junk'),
@@ -1179,6 +1179,7 @@ hintTable = {
     '1068':                                                     ("They say Ganon's tail is vulnerable to nuts, arrows, swords, explosives, hammers...^...sticks, seeds, boomerangs...^...rods, shovels, iron balls, angry bees...", None, 'junk'),
     '1069':                                                     ("They say that you're wasting time reading this hint, but I disagree. Talk to me again!", None, 'junk'),
     '1070':                                                     ("They say Ganondorf knows where to find the instrument of his doom.", None, 'junk'),
+    '1071':                                                     ("I heard @ is pretty good at Zelda.", None, 'junk'),
 
     'Deku Tree':                                                ("an ancient tree", "Deku Tree", 'dungeonName'),
     'Dodongos Cavern':                                          ("an immense cavern", "Dodongo's Cavern", 'dungeonName'),
@@ -1191,7 +1192,7 @@ hintTable = {
     'Ice Cavern':                                               ("a frozen maze", "Ice Cavern", 'dungeonName'),
     'Bottom of the Well':                                       ("a shadow\'s prison", "Bottom of the Well", 'dungeonName'),
     'Gerudo Training Grounds':                                  ("the test of thieves", "Gerudo Training Grounds", 'dungeonName'),
-    'Ganons Castle':                                            ("a conquered citadel", "Ganon's Castle", 'dungeonName'),
+    'Ganons Castle':                                            ("a conquered citadel", "Inside Ganon's Castle", 'dungeonName'),
     
     'Queen Gohma':                                              ("One inside an #ancient tree#...", "One in the #Deku Tree#...", 'boss'),
     'King Dodongo':                                             ("One within an #immense cavern#...", "One in #Dodongo's Cavern#...", 'boss'),
@@ -1225,6 +1226,7 @@ hintTable = {
     'Spiritual Stone Text Start':                               ("3 Spiritual Stones found in Hyrule...", None, 'altar'),
     'Child Altar Text End':                                     ("\x13\x07Ye who may become a Hero...&Stand with the Ocarina and&play the Song of Time.", None, 'altar'),
     'Adult Altar Text Start':                                   ("When evil rules all, an awakening&voice from the Sacred Realm will&call those destined to be Sages,&who dwell in the \x05\x41five temples\x05\x40.", None, 'altar'),
+    'Adult Altar Text End':                                     ("Together with the Hero of Time,&the awakened ones will bind the&evil and return the light of peace&to the world...", None, 'altar'),
 
     'Validation Line':                                          ("Hmph... Since you made it this far,&I'll let you know what glorious&prize of Ganon's you likely&missed out on in my tower.^Behold...^", None, 'validation line'),
     'Light Arrow Location':                                     ("Ha ha ha... You'll never beat me by&reflecting my lightning bolts&and unleashing the arrows from&", None, 'Light Arrow Location'),
